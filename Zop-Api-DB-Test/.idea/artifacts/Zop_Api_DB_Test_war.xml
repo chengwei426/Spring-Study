@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Zop-Api-DB-Test:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Zop-Api-DB-Test</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="zopApiTest.war">
+      <element id="artifact" artifact-name="Zop-Api-DB-Test:war exploded" />
+    </root>
+  </artifact>
+</component>

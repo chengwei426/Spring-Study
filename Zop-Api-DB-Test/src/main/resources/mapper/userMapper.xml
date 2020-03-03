@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iwhalecloud.mapper.UserMapper">
+    <select id="fetchApiPerformanceTestingByCode" resultType="ApiPerformanceTesting" parameterType="java.lang.String">
+        select ID id,
+            SLEEP_TIME sleepTime,
+            IF_SLEEP ifSleep,
+            IF_USE_RESPONSE ifUseResponse,
+            RESPONSE_BODY responseBody,
+            TEST_CODE testCode
+        from api_performance_testing WHERE TEST_CODE = #{testCode}
+    </select>
+
+    <select id="getApiPerformanceTestingById" resultType="ApiPerformanceTesting" parameterType="java.lang.String">
+        select ID id,
+               SLEEP_TIME sleepTime,
+               IF_SLEEP ifSleep,
+               IF_USE_RESPONSE ifUseResponse,
+               RESPONSE_BODY responseBody,
+               TEST_CODE testCode
+        from api_performance_testing WHERE id = #{id}
+    </select>
+
+    <update id="modifyApiPerformanceTesting" parameterType="ApiPerformanceTesting">
+        UPDATE api_performance_testing SET
+               SLEEP_TIME = #{sleepTime},
+               <if test="ifSleep != null and ifSleep !=''">
+                   IF_SLEEP = #{ifSleep},
+               </if>
+                <if test="ifUseResponse != null and ifUseResponse !=''">
+                    IF_USE_RESPONSE = #{ifUseResponse},
+                </if>
+               RESPONSE_BODY = #{responseBody},
+               UPDATE_TIME = now()
+            WHERE TEST_CODE = #{testCode}
+    </update>
+
+</mapper>
